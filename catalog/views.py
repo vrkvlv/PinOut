@@ -9,7 +9,7 @@ from .serializers import (
     ManufacturerSerializer,
 )
 
-# ---------- Категорії ----------
+# тут категорії
 
 
 class CategoryListAPIView(APIView):
@@ -75,7 +75,7 @@ class CategoryDetailAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# ---------- Виробники ----------
+# отут виробрники
 
 
 class ManufacturerListAPIView(APIView):
@@ -143,7 +143,7 @@ class ManufacturerDetailAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# ---------- Компоненти ----------
+# отут компоненти
 
 
 class ComponentListAPIView(APIView):

@@ -16,10 +16,10 @@ class ManufacturerSerializer(serializers.ModelSerializer):
 
 
 class ComponentSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)    #читання
+    category = CategorySerializer(read_only=True)  # читання
     manufacturer = ManufacturerSerializer(read_only=True)
 
-    category_id = serializers.PrimaryKeyRelatedField(   #створіння редагування
+    category_id = serializers.PrimaryKeyRelatedField(  # створіння редагування
         queryset=Category.objects.all(), source="category", write_only=True
     )
     manufacturer_id = serializers.PrimaryKeyRelatedField(
