@@ -1,5 +1,5 @@
-from django.db import models
 from django.core.validators import MinValueValidator
+from django.db import models
 
 
 class Category(models.Model):
@@ -29,7 +29,7 @@ class Component(models.Model):
     price = models.DecimalField(
         max_digits=8, decimal_places=2, validators=[MinValueValidator(0)]
     )
-    specs = models.TextFieldл(blank=True)
+    specs = models.TextField(blank=True)
     datasheet_url = models.URLField(blank=True)
     application = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
