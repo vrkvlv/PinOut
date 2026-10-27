@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Category, Component, Manufacturer
+
+admin.site.register(Category)
+admin.site.register(Manufacturer)
+admin.site.register(Component)
