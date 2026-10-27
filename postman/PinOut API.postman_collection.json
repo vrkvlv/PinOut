@@ -1,0 +1,591 @@
+{
+  "info": {
+    "_postman_id": "27a3bd76-7a63-4b1a-b9b5-38695e31cc34",
+    "name": "PinOut API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55863292",
+    "_collection_link": "https://go.postman.co/collection/55863292-27a3bd76-7a63-4b1a-b9b5-38695e31cc34?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. Створити категорію",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Мікроконтролери\",\n  \"description\": \"Плати Arduino, ESP32\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/categories/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Помилка 400: категорія без назви",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Без назви\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/categories/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Список категорій",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/categories/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Одна категорія",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/categories/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Помилка 404: неіснуюча категорія",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/categories/999/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            "999",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Редагувати категорію",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Плати, які виконують програму\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/categories/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. Створити виробника",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Espressif\",\n  \"country\": \"Китай\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/manufacturers/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "manufacturers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8. Список виробників",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/manufacturers/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "manufacturers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. Один виробник",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/manufacturers/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "manufacturers",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. Редагувати виробника",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Робить ESP32\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/manufacturers/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "manufacturers",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "11. Створити компонент",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ESP32\",\n  \"price\": 250,\n  \"category_id\": 1,\n  \"manufacturer_id\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/components/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12. Список компонентів",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/components/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13. Один компонент",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/components/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "14. Редагувати компонент",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 230\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/components/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "15. Створити проєкт",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Домашня метеостанція\",\n  \"difficulty\": \"easy\",\n  \"time\": \"1.5 години\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/projects/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "16. Список проєктів",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/projects/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "17. Один проєкт",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/projects/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "18. Редагувати проєкт",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"time\": \"2 години\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/projects/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "19. Проєкти з компонентом",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/components/1/projects/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            "1",
+            "projects",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "20. Помилка 409: видалити категорію, в якій є компоненти",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/categories/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "21. Видалити проєкт",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/projects/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "projects",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "22. Видалити компонент",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/components/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "components",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "23. Видалити категорію",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/categories/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "categories",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "24. Видалити виробника",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/manufacturers/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "manufacturers",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api"
+    }
+  ]
+}
