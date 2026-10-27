@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator
 from catalog.models import Component
 
 
@@ -26,7 +26,7 @@ class ProjectComponent(models.Model):
     component = models.ForeignKey(
         Component, on_delete=models.PROTECT, related_name="project_components"
     )
-    quantity = models.PositiveIntegerField(default=1)
+    quantity = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
 
     def __str__(self):
         return f"{self.project} - {self.component}"
@@ -34,7 +34,7 @@ class ProjectComponent(models.Model):
 
 class Step(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="steps")
-    number = models.PositiveIntegerField()
+    number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     title = models.CharField(max_length=200)
     text = models.TextField(blank=True)
     image_url = models.URLField(blank=True)
@@ -42,6 +42,7 @@ class Step(models.Model):
 
     class Meta:
         ordering = ["number"]
+        unique_together = ["project", "number"]
 
     def __str__(self):
         return f"{self.project} - крок {self.number}"
