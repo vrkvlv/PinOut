@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from users.permissions import IsAdminOrReadOnly
+
 from .models import Category, Component, Manufacturer
 from .serializers import (
     CategorySerializer,
@@ -13,6 +15,8 @@ from .serializers import (
 
 
 class CategoryListAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request):
         categories = Category.objects.all()
         serializer = CategorySerializer(categories, many=True)
@@ -30,6 +34,8 @@ class CategoryListAPIView(APIView):
 
 
 class CategoryDetailAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get_object(self, pk):
         try:
             return Category.objects.get(pk=pk)
@@ -79,6 +85,8 @@ class CategoryDetailAPIView(APIView):
 
 
 class ManufacturerListAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request):
         manufacturers = Manufacturer.objects.all()
         serializer = ManufacturerSerializer(manufacturers, many=True)
@@ -96,6 +104,8 @@ class ManufacturerListAPIView(APIView):
 
 
 class ManufacturerDetailAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get_object(self, pk):
         try:
             return Manufacturer.objects.get(pk=pk)
@@ -147,6 +157,8 @@ class ManufacturerDetailAPIView(APIView):
 
 
 class ComponentListAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request):
         components = Component.objects.all()
         serializer = ComponentSerializer(components, many=True)
@@ -164,6 +176,8 @@ class ComponentListAPIView(APIView):
 
 
 class ComponentDetailAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get_object(self, pk):
         try:
             return Component.objects.get(pk=pk)
