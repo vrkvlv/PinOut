@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from catalog.models import Component
+from users.permissions import IsAdminOrReadOnly
 
 from .models import Project
 from .serializers import ProjectSerializer
@@ -10,6 +11,8 @@ from .serializers import ProjectSerializer
 
 # GET (список) і POST (створення)
 class ProjectListAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request):
         projects = Project.objects.all()
         serializer = ProjectSerializer(projects, many=True)
@@ -28,6 +31,8 @@ class ProjectListAPIView(APIView):
 
 # GET (один), PATCH (редагування) і DELETE
 class ProjectDetailAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get_object(self, pk):
         try:
             return Project.objects.get(pk=pk)
@@ -70,6 +75,8 @@ class ProjectDetailAPIView(APIView):
 
 # GET проєкти, де використовується компонент
 class ComponentProjectsAPIView(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request, pk):
         if not Component.objects.filter(pk=pk).exists():
             return Response(
