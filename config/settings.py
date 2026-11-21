@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "projects",
     "corsheaders",
     "users",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -135,8 +136,44 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "PinOut API",
+    "DESCRIPTION": "API довідника компонентів Arduino та проєктів",
+    "VERSION": "1.0.0",
+}
+
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
 ]
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "{asctime} [{levelname}] {name}: {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        "catalog": {
+            "handlers": ["console"],
+            "level": config("LOG_LEVEL", default="INFO"),
+        },
+        "users": {
+            "handlers": ["console"],
+            "level": config("LOG_LEVEL", default="INFO"),
+        },
+    },
+}
